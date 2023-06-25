@@ -1,6 +1,0 @@
-\babel@toc {french}{}
-\beamer@sectionintoc {1}{Aborder un quartier par le lieu}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{La topographie du quartier Richelieu}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{Qu'est-ce qui fait quartier au XIX\textsuperscript {e} siècle?}{5}{0}{1}
-\beamer@subsectionintoc {1}{3}{Problématiques}{6}{0}{1}
-\beamer@sectionintoc {2}{Modéliser un lieu: structurer une pluralité}{13}{0}{2}

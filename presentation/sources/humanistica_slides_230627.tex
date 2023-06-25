@@ -1,0 +1,349 @@
+%http://mcclinews.free.fr/latex/beamermodif/beamerbox.html
+\documentclass[10pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fontspec}
+\usepackage{csquotes}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{capt-of}% caption in column envs
+\usepackage{setspace}%line spacing
+
+% colors
+\definecolor{palepink}{rgb}{0.98, 0.85, 0.87}
+\definecolor{plum}{rgb}{0.44, 0.11, 0.11}
+\definecolor{lilac}{rgb}{0.8, 0.8, 1.0}
+\definecolor{peachpuff}{rgb}{1.0, 0.85, 0.73}
+\definecolor{lightpink}{rgb}{1.0, 0.71, 0.76}
+\definecolor{pearl}{rgb}{0.94, 0.92, 0.84}
+\definecolor{lightmauve}{rgb}{0.86, 0.82, 1.0}
+\definecolor{cherryblossompink}{rgb}{1.0, 0.72, 0.77} 	
+\definecolor{nadeshikopink}{rgb}{0.96, 0.68, 0.78}
+\definecolor{pastelviolet}{rgb}{0.8, 0.6, 0.79}
+\definecolor{moccasin}{rgb}{0.98, 0.92, 0.84}
+\definecolor{persimmon}{rgb}{0.93, 0.35, 0.0}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{wildstrawberry}{rgb}{1.0, 0.26, 0.64}
+\definecolor{outrageousorange}{rgb}{1.0, 0.43, 0.29}
+\definecolor{darkterracotta}{rgb}{0.8, 0.31, 0.36}
+\definecolor{lightmauve}{rgb}{0.86, 0.82, 1.0}
+\definecolor{sauge}{RGB}{148, 181, 215}
+\definecolor{darkdust}{RGB}{83, 52, 89}
+
+% style the beamer template
+\usecolortheme{sauge}
+\usefonttheme{serif}
+\usetheme{Goettingen}
+\makeatletter
+\setbeamertemplate{sidebar canvas \beamer@sidebarside}[default]
+
+%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+\makeatother
+
+% captions
+\usepackage{subcaption}
+\usepackage{caption}
+\DeclareCaptionFormat{custom}{%
+	\scriptsize{#1#2#3}
+}
+\captionsetup{format=custom,width=0.8\textwidth}
+\captionsetup[listing]{skip=-10pt}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\tikzstyle{base} = [%
+	draw,%
+	rectangle,%
+	rounded corners=3pt,%
+	minimum height=1cm,%
+	fill=lilac,%
+	draw=plum,%
+	text centered,%
+	text width=4cm%
+]
+\tikzstyle{db} = [%
+	cylinder,%
+	shape border rotate=90,%
+	aspect=0.25,%
+	fill=pastelviolet,%
+	draw=plum,%
+	text centered,%
+	text width=4cm%
+]
+\tikzstyle{transf} = [%
+	trapezium,%
+	trapezium left angle=70,%
+	trapezium right angle=110,%
+	minimum height=1cm,%
+	fill=lightpink,%
+	draw=plum,%
+	text centered,%
+	text width=3cm%
+]
+\tikzstyle{choice} = [%
+	diamond,%
+	minimum width=2cm,%
+	aspect=2,%
+	fill=peachpuff,%
+	draw=plum,%
+	text centered,%
+	text width=4cm%
+]
+\tikzstyle{expl} = [%
+	rectangle,%
+	draw=plum,%
+	fill=moccasin,%
+	text centered,%
+	text width=4cm%
+]
+\tikzstyle{outline} = [%
+	rectangle,%
+	rounded corners,%
+	draw=plum,%
+	text width=4cm,%
+	ultra thick
+]
+\tikzstyle{outline-no-width} = [%
+	rectangle,%
+	rounded corners,%
+	draw=plum,%
+	ultra thick
+]
+\tikzstyle{blank} = [%
+	rectangle,%
+	draw=white,%
+	draw opacity=0%
+]
+\tikzstyle{arrow} = [%
+	thick,%
+	->,%
+	>=stealth,%
+	color=plum%	
+]
+\tikzstyle{doublearrow} = [%
+	thick,%
+	<->,%
+	>=stealth,%
+	color=plum,%
+]
+\tikzstyle{line} = [%
+	thick,%
+	color=plum%	
+]
+\tikzstyle{dotted} = [%
+	thick,%
+	->,%
+	>=stealth,%
+	color=plum,%
+	dash pattern=on 3pt off 4pt on \the\pgflinewidth off 4pt%
+]
+\pgfdeclarelayer{bg}    % declare background layer
+\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+
+% commands
+\newcommand{\emulatecaption}[1]{%
+	% emulate the `\caption` style outside of `figure` env
+	\begin{spacing}{0.9}%
+		\scriptsize F\textsc{igure} -- #1%
+	\end{spacing}
+}
+
+\title[\enquote{La marque du lieu} dans le \enquote{quartier Richelieu}]{\enquote{La marque du lieu} dans le \enquote{quartier Richelieu}}
+\subtitle{Implications de la notion de lieu pour la modélisation et la visualisation d'un corpus iconographique, cartographique et textuel (Paris, 1750-1950)}
+\author[P. Kervegan, C. Duvette, C. Prudhomme, C. Jeanson \textit{et. al.}]{%
+	Paul Kervegan\textsuperscript{1}
+	\and Charlotte Duvette\textsuperscript{1}\\
+	\and Colin Prudhomme\textsuperscript{1}
+	\and Loïc Jeanson\textsuperscript{2}
+	\and Justine Gain\textsuperscript{1}
+	\and Esther Dasilva\textsuperscript{1}
+	\and Louise Baranger\textsuperscript{1}
+	\\~\\
+	\textsuperscript{1}: Institut national d'histoire de l'art (France)\\
+	\textsuperscript{2}: Université de Lausanne (Suisse)
+}
+\date{Conférence Humanistica, 27 juin 2023, Genève}
+
+\usepackage{hyperref}
+\hypersetup{
+	%colorlinks=true,
+	%linkcolor=darkdust,
+	citecolor=wildstrawberry,      
+	urlcolor=wildstrawberry,
+	pdfauthor={Paul KERVEGAN and Charlotte Duvette and Colin Prudhomme and Loïc Jeanson and Justine Gain and Esther Dasilva and Louise Baranger}, 
+	pdftitle={\enquote{La marque du lieu} dans le \enquote{quartier Richelieu}: Implications de la notion de lieu pour la modélisation et la visualisation d'un corpus iconographique, cartographique et textuel (Paris, 1750-1950)}, 
+	pdfsubject={Modélisation de données, géohistoire},
+	pdfkeywords={modélisation}{géohistoire}{histoire de l'architecture}{sql}{modélisation 3D}{postgresql}{sig}{système d'information géographique}
+}
+
+\begin{document}
+% present the outline at search section change
+\AtBeginSection{
+	\begin{frame}{Plan}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%\begin{frame}{title}{subtitle}
+\begin{frame}{Plan}
+	\tableofcontents
+\end{frame}
+
+\section{Aborder un quartier par le lieu}
+\subsection{La topographie du quartier Richelieu}
+\begin{frame}{Aborder un quartier par le lieu}{La topographie du quartier Richelieu}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{includes/topographie.png}
+		\caption{La topographie du quartier Richelieu}
+	\end{figure}
+\end{frame}
+
+\subsection{Qu'est-ce qui fait quartier au XIX\textsuperscript{e} siècle?}
+\begin{frame}{Aborder un quartier par le lieu}{Qu'est-ce qui fait quartier au XIX\textsuperscript{e} siècle?}
+	\begin{figure}
+		\centering
+		\begin{subfigure}{0.7\textwidth}
+			\includegraphics[width=\textwidth]{includes/app_1.png}
+		\end{subfigure}
+		\begin{subfigure}{0.7\textwidth}
+			\includegraphics[width=\textwidth]{includes/app_2.png}
+		\end{subfigure}
+		\caption{Deux captures d'écran de l'application Web du projet \enquote{Richelieu}}
+	\end{figure}
+\end{frame}
+
+% 2e slide appli
+
+\subsection{Problématiques}
+\begin{frame}{Aborder un quartier par le lieu}{Les réseaux du quartier}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\begin{tabular}{p{\textwidth}}
+				\begin{figure}
+				\centering
+					\includegraphics[width=0.7\textwidth]{includes/costume.png}
+				\end{figure}
+				\\ 
+				\emulatecaption{La Gazette des Salons, 1836, n°115, Toilettes de Longchamp, Rijksmuseum, Amsterdam}
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Chapeau de Maurice-Beauvais, \textbf{93 rue Richelieu}
+				\item Redingote habit et pantalon de Barbe, \textbf{Rue Choiseul}
+				\item Bottes de Sakoski, \textbf{Palais-Royal}
+				\item Chapeau de Gibus, \textbf{Rue Vivienne}
+				\item Voile de Violard, \textbf{2 bis rue Choiseul}
+				\item Robe-redingote de Mme Ecorcheville, \textbf{5 rue d’Hanovre}
+			\end{itemize}		
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aborder un quartier par le lieu}{Les réseaux du quartier}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.65\textheight]{includes/psyche.png}
+		\caption{\textit{Psyché. Opéra en quatre actes, interprété à l'Opéra–Comique...}, affiche, lithographie de Antonin-Marie Chatinière, 1878, Département bibliothèque-musée de l’Opéra, BnF. Publicité pour des imprimés en vente au \textbf{Au Ménestrel, 2 bis, rue Vivienne}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Aborder un quartier par le lieu}{Les réseaux du quartier}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{includes/spatial0.png}
+		\caption{Spatialisation de sources archivisitiques}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Aborder un quartier par le lieu}{Histoire des mentalités}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\begin{tabular}{p{\textwidth}}
+				\includegraphics[height=0.27\textheight]{includes/macaire.jpg}
+				\\
+				\emulatecaption{Lorentz, Alcide Joseph, \textit{Monument à Robert Macaire},1856, musée Carnavalet}
+				\\
+				\includegraphics[height=0.27\textheight]{includes/promenade.png}
+				\\
+				\emulatecaption{Jean-Baptiste Arnout, \textit{Promenade pittoresque dans Paris, n° 21}, musée Carnavalet}
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{tabular}{p{\textwidth}}
+				\begin{center}
+					\includegraphics[height=0.63\textheight]{includes/argent.jpg}
+				\end{center}
+				\\
+				\emulatecaption{Alcide Joseph Lorentz, \textit{Monument à Robert Macaire},1856, musée Carnavalet}
+			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{frame}	
+
+\begin{frame}{Aborder un quartier par le lieu}{Un cas d'étude: le magasin de nouveautés}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\begin{tabular}{p{\textwidth}}
+				\begin{center}
+					\includegraphics[width=0.9\textwidth]{includes/vdf1.png}
+				\end{center}
+				\\
+				\emulatecaption{\textit{\enquote{Aux villes de France}, n° 51 rue Vivienne, n° 104 rue Richelieu, \enquote{magasin de nouveautés le plus vaste de l’univers}}, Bibliothèque historique de la ville de Paris}
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{tabular}{p{\textwidth}}
+				\includegraphics[height=0.35\textheight]{includes/vdf2.png}
+				\\
+				\includegraphics[height=0.35\textheight]{includes/map.png}
+				\\
+				\emulatecaption{\textit{Plan parcellaire municipal de Paris (fin XIX\textsuperscript{e})}, Quartier Vivienne, Archives de la Ville de Paris}
+			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aborder un quartier par le lieu}{Spatialiser la ville rêvée}
+	\begin{figure}
+		\centering
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/pr.jpg}
+			\caption{Henri Deverin, Projet de transformation du Palais-Royal, \textit{Revue l’architecture}, 1905}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\textwidth]{includes/pb.jpg}
+			\caption{Jean-Baptiste Dedeban, \textit{Projet d’éclairage de la Bourse}, musée Carnavalet, 1829}
+		\end{subfigure}
+		%\hfill
+		\begin{subfigure}{\textwidth}
+			\centering
+			\includegraphics[width=0.25\textwidth]{includes/pb_detail.png}
+			\caption{Jean-Baptiste Dedeban, \textit{Projet d’éclairage de la Bourse} (détail), musée Carnavalet, 1829}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Aborder un quartier par le lieu}{Resituer les représentations d'un quartier dans l'espace}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{includes/final_cha.png}
+	\end{figure}
+\end{frame}
+
+\section{Modéliser un lieu: structurer une pluralité}
+\subsection{Une réponse technique à des questionnements théoriques}
+\subsection{Des unités minimales en interrelation: une approche modulaire du lieu}
+\subsection{Modélisation partielle et angles morts}
+
+\end{document}

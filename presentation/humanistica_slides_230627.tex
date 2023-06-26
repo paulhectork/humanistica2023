@@ -1,5 +1,5 @@
 %http://mcclinews.free.fr/latex/beamermodif/beamerbox.html
-\documentclass[9pt]{beamer}
+\documentclass[8pt]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -21,7 +21,7 @@
 %\definecolor{sauge}{RGB}{148, 181, 215}
 %\definecolor{sauge}{HTML}{DBD2DD}
 %\definecolor{sauge}{HTML}{C4D0D3}
-\definecolor{sauge}{HTML}{C2CED3}
+\definecolor{sauge}{HTML}{EDDECB}
 \definecolor{darkdust}{RGB}{83, 52, 89}
 
 % style the beamer template
@@ -108,7 +108,7 @@
 	\and Charlotte Duvette\textsuperscript{1}\\
 	\and Colin Prudhomme\textsuperscript{1}
 	\and Loïc Jeanson\textsuperscript{2}
-	\and Justine Gain\textsuperscript{1}
+	\and Justine Gain\textsuperscript{1}\\
 	\and Esther Dasilva\textsuperscript{1}
 	\and Louise Baranger\textsuperscript{1}
 	\\~\\
@@ -121,8 +121,8 @@
 \hypersetup{
 	%colorlinks=true,
 	%linkcolor=darkdust,
-	citecolor=wildstrawberry,      
-	urlcolor=wildstrawberry,
+	%citecolor=wildstrawberry,      
+	%urlcolor=wildstrawberry,
 	pdfauthor={Paul KERVEGAN and Charlotte Duvette and Colin Prudhomme and Loïc Jeanson and Justine Gain and Esther Dasilva and Louise Baranger}, 
 	pdftitle={\enquote{La marque du lieu} dans le \enquote{quartier Richelieu}: Implications de la notion de lieu pour la modélisation et la visualisation d'un corpus iconographique, cartographique et textuel (Paris, 1750-1950)}, 
 	pdfsubject={Modélisation de données, géohistoire},
@@ -147,7 +147,7 @@
 \end{frame}
 
 \section{Aborder un quartier par le lieu}
-\subsection{La topographie du quartier Richelieu}
+\subsection[La topographie]{La topographie du quartier Richelieu}
 \begin{frame}{Aborder un quartier par le lieu}{La topographie du quartier Richelieu}
 	\begin{figure}[h]
 		\centering
@@ -156,7 +156,7 @@
 	\end{figure}
 \end{frame}
 
-\subsection{Qu'est-ce qui fait quartier au XIX\textsuperscript{e} siècle?}
+\subsection[Qu'est-ce qui fait quartier?]{Qu'est-ce qui fait quartier au XIX\textsuperscript{e} siècle?}
 \begin{frame}{Aborder un quartier par le lieu}{Qu'est-ce qui fait quartier au XIX\textsuperscript{e} siècle?}
 	\begin{figure}
 		\centering
@@ -290,7 +290,7 @@
 \end{frame}
 
 \section{Modéliser un lieu, structurer une pluralité}
-\subsection{Une réponse technique à des questionnements théoriques}
+\subsection[Une réponse technique]{Une réponse technique à des questionnements théoriques}
 \begin{frame}{Modéliser un lieu, structurer une pluralité}{Une réponse technique à des questionnements théoriques}
 	Les réflexions sur le lieu \textbf{structurent toute la chaîne de traitement} du projet Richelieu et sont centrales sur \textbf{trois plans}:
 	\begin{itemize}
@@ -305,7 +305,7 @@
 \end{frame}
 
 
-\subsection{Des unités minimales en interrelation: une approche modulaire du lieu}
+\subsection[Des unités minimales]{Des unités minimales en interrelation: une approche modulaire du lieu}
 \begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
 	Un modèle relationnel (\texttt{SQL}) permet une approche \textbf{modulaire} du lieu:
 	\begin{itemize}
@@ -520,13 +520,235 @@
 	\end{figure}
 \end{frame}
 
-\subsection{Modélisation partielle et angles morts}
+\subsection[Modélisation partielle]{Modélisation partielle et angles morts}
 \begin{frame}{Modéliser un lieu, structurer une pluralité}{Modélisation partielle et angles morts}
 	Notre approche du lieu est pragmatique et laisse des angles morts:
 	\begin{itemize}
 		\item Contraintes techniques
-		 \item Espace bidimensionnel
+		\item Espace bidimensionnel
 	\end{itemize}
+\end{frame}
+
+\section{Restituer un lieu: des sources à la modélisation 3D}
+\subsection{Quelles sources pour la 3D?}
+\begin{frame}{Restituer un lieu: la modélisation 3D}{Quelles sources pour la 3D?}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\small
+				\textit{\enquote{J'aimerais qu’il existe des lieux stables, immobiles, intangibles, intouchés et presque intouchables, immuables, enracinés; des lieux qui seraient des références, des points de départ, des sources.}}
+			
+				\textit{\enquote{[...] De tels lieux n’existent pas, et c’est parce qu’ils n'existent pas que l’espace devient question, cesse d’être une évidence, cesse d'être incorporé, cesse d'être approprié. L’espace est un doute: il faut sans cesse le marquer, le désigner; il n’est jamais à moi, il ne m’est jamais donné, il faut que j’en fasse la conquête.}}	
+			
+				\textit{\enquote{[…] L'espace fond comme le sable coule entre les doigts. Le temps l’emporte et ne m’en laisse que des lambeaux informes...}}
+			
+			\normalsize
+			-- Georges Perec, \textit{Espèces d’espaces}, Paris, Galilée, 1974, p. 122-123.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide0.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Quelles sources pour la 3D?}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			Des sources de \textbf{nature, fiabilité et précision multiples}:
+			\begin{itemize}
+				\item Plans de censive, documents fiscaux levés ou non par des géomètres
+				\item Atlas, documents levés à l’échelle de la ville, eux aussi à précision variable
+				\item Plans d’expropriation ou d’alignement, utilisés par les urbanistes et les services municipaux, très précis
+				\item Plans d’ensemble à l’usage du public, à destination commerciale, touristique, explicative souvent sans grand souci de précision
+			\end{itemize}
+			Cette hétérogénéité des sources pose de nombreuses questions quant à la façon de les exploiter et nécessite une documentation de l’incertitude
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide1.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Des sources à la 3D}
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Des sources au SIG}
+	\begin{figure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide2_0.png}
+			\caption{Démarche de géoréférencement régressive}
+		\end{subfigure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide2_1.png}
+			\caption{Vectorisation des plans pour l’analyse spatiale}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Mutations et transmissions}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			On peut ensuite modéliser la stratigraphie de la ville pour rendre compte de son \enquote{épaisseur} chronologique:
+			\begin{itemize}
+				\item Pour étudier, caractériser comprendre la transmission des formes
+				\item Pour visualiser l’aspect lacunaire des sources et les mettre en regard
+				\item Pour identifier l’évolution de certaines caractéristiques du bâti (densité, surface, occupation…)
+			\end{itemize}
+			Cette structure en arbre reprend donc la modélisation du lieu dans la base de données
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide3.png}
+				\caption{Modéliser les mutations du parcellaire}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Spatialisation des sources}
+	\begin{figure}
+		\begin{subfigure}{\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide4_0.png}
+			\vspace{0.5cm}	
+		\end{subfigure}
+		\begin{subfigure}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide4_1.png}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide4_2.png}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Les sources et l'espace}
+	\begin{columns}[c]
+		\begin{column}{0.4\textwidth}
+			L’aspect hétérogène des sources est particulièrement visible dans leur rapport à l’espace et impose certaines \textbf{contraintes}:
+			\begin{itemize}
+				\item Toutes les sources ne seront pas datables et spatialisables
+				\item Il faudra qualifier, de façon empirique, la représentation que la source offre de l’espace (critères de fiabilité et de lisibilité)
+			\end{itemize}
+			Ces contraintes rendent complexe un traitement automatique de la spatialisation des sources
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide5.png}
+			\end{figure}	
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Quelle structure pour les sources?}
+	\begin{columns}[c]
+		\begin{column}{0.4\textwidth}
+			La mise en relation entre les sources permet de faire une \textbf{première analyse sur leur relation au lieu}:
+			\begin{itemize}
+				\item 147 différents clusters dans l’iconographie, dont 57 contenant 75\% des documents
+				\item On peut aussi identifier l’ordre de traitement des documents pour la modélisation en procédant de proche en proche
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide6.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{La rue du Quatre Septembre}
+	\begin{figure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide7_0.png}
+		\end{subfigure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide7_1.png}
+		\end{subfigure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide7_2.png}
+		\end{subfigure}
+		\begin{subfigure}{0.48\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide7_3.png}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\subsection{Vers une restitution 3D de la place de la Bourse}
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Vers une restitution 3D de la place de la Bourse}
+	\begin{columns}[c]
+		\begin{column}{0.45\textwidth}
+			Travailler avec des sources photographiques historiques pour la restitution 3D impose de nombreuses contraintes:
+			\begin{itemize}
+				\item Les tirages peuvent avoir été endommagés et peuvent comporter des défauts liés à leur production ou numérisation
+				\item La densité de documents relatifs à un même bâtiment est généralement faible, et celui-ci peut avoir été modifié entre deux clichés
+				\item On ne dispose pas de données de calibration internes ou externes associés aux documents, et on doit généralement les déterminer à partir d’une seule image.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide8.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Méthodologie}
+	\begin{figure}
+		\begin{subfigure}{0.25\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide9_0.png}
+			\caption{Points de contrôle image}
+		\end{subfigure}
+		\begin{subfigure}{0.23\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide9_1.png}
+			\caption{Points de contrôle modèle}
+		\end{subfigure}
+		\begin{subfigure}{0.25\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide9_2.png}
+			\caption{Calibration interne et externe}
+		\end{subfigure}
+		\begin{subfigure}{0.23\textwidth}
+			\includegraphics[width=\textwidth]{includes/c_slide9_3.png}
+			\caption{Modélisation d'après photographie}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Restituer un lieu: des sources à la modélisation 3D}{Méthodologie}{Limites de perspective}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			La méthode ici présentée présente toutefois un certain nombre d’inconvénients:
+			\begin{itemize}
+				\item La détermination des paramètres de calibration se fait de manière approchée et n’est pas toujours robuste
+				\item L’inclusion d’un plus grand nombre de paramètres à déterminer implique une solution localement précise mais globalement biaisée
+				\item Il est souvent nécessaire d’exploiter des photos avec une parallaxe importante pour la restitution, mais celles-ci ne sont pas souvent disponibles
+				\item La restitution reste un processus relativement manuel à cause de la difficulté à trouver des points coïncidents entre les 
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{includes/c_slide10.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section*{Conclusion}
+\begin{frame}{Conclusion}
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\textwidth]{includes/conclu0.png}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\textwidth]{includes/conclu1.png}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\textwidth]{includes/app_2.png}
+		\end{subfigure}
+		\caption{Site et application Web du projet Richelieu^}
+	\end{figure}
+	\begin{center}
+		Site de présentation du projet:
+		\url{https://quartier-richelieu.inha.fr}
+	\end{center}
 \end{frame}
 
 \end{document}

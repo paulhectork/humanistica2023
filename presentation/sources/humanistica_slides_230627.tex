@@ -1,5 +1,5 @@
 %http://mcclinews.free.fr/latex/beamermodif/beamerbox.html
-\documentclass[10pt]{beamer}
+\documentclass[9pt]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -7,29 +7,21 @@
 \usepackage{fontspec}
 \usepackage{csquotes}
 \usepackage{subcaption}
-\usepackage{multirow}
+\usepackage[backend=biber,style=authoryear,sorting=none]{biblatex}
 \usepackage{capt-of}% caption in column envs
 \usepackage{setspace}%line spacing
 
 % colors
-\definecolor{palepink}{rgb}{0.98, 0.85, 0.87}
 \definecolor{plum}{rgb}{0.44, 0.11, 0.11}
 \definecolor{lilac}{rgb}{0.8, 0.8, 1.0}
-\definecolor{peachpuff}{rgb}{1.0, 0.85, 0.73}
-\definecolor{lightpink}{rgb}{1.0, 0.71, 0.76}
-\definecolor{pearl}{rgb}{0.94, 0.92, 0.84}
-\definecolor{lightmauve}{rgb}{0.86, 0.82, 1.0}
-\definecolor{cherryblossompink}{rgb}{1.0, 0.72, 0.77} 	
-\definecolor{nadeshikopink}{rgb}{0.96, 0.68, 0.78}
 \definecolor{pastelviolet}{rgb}{0.8, 0.6, 0.79}
 \definecolor{moccasin}{rgb}{0.98, 0.92, 0.84}
-\definecolor{persimmon}{rgb}{0.93, 0.35, 0.0}
-\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
-\definecolor{wildstrawberry}{rgb}{1.0, 0.26, 0.64}
-\definecolor{outrageousorange}{rgb}{1.0, 0.43, 0.29}
 \definecolor{darkterracotta}{rgb}{0.8, 0.31, 0.36}
 \definecolor{lightmauve}{rgb}{0.86, 0.82, 1.0}
-\definecolor{sauge}{RGB}{148, 181, 215}
+%\definecolor{sauge}{RGB}{148, 181, 215}
+%\definecolor{sauge}{HTML}{DBD2DD}
+%\definecolor{sauge}{HTML}{C4D0D3}
+\definecolor{sauge}{HTML}{C2CED3}
 \definecolor{darkdust}{RGB}{83, 52, 89}
 
 % style the beamer template
@@ -56,7 +48,8 @@
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric}
-\tikzstyle{base} = [%
+
+\tikzstyle{act} = [%
 	draw,%
 	rectangle,%
 	rounded corners=3pt,%
@@ -75,50 +68,6 @@
 	text centered,%
 	text width=4cm%
 ]
-\tikzstyle{transf} = [%
-	trapezium,%
-	trapezium left angle=70,%
-	trapezium right angle=110,%
-	minimum height=1cm,%
-	fill=lightpink,%
-	draw=plum,%
-	text centered,%
-	text width=3cm%
-]
-\tikzstyle{choice} = [%
-	diamond,%
-	minimum width=2cm,%
-	aspect=2,%
-	fill=peachpuff,%
-	draw=plum,%
-	text centered,%
-	text width=4cm%
-]
-\tikzstyle{expl} = [%
-	rectangle,%
-	draw=plum,%
-	fill=moccasin,%
-	text centered,%
-	text width=4cm%
-]
-\tikzstyle{outline} = [%
-	rectangle,%
-	rounded corners,%
-	draw=plum,%
-	text width=4cm,%
-	ultra thick
-]
-\tikzstyle{outline-no-width} = [%
-	rectangle,%
-	rounded corners,%
-	draw=plum,%
-	ultra thick
-]
-\tikzstyle{blank} = [%
-	rectangle,%
-	draw=white,%
-	draw opacity=0%
-]
 \tikzstyle{arrow} = [%
 	thick,%
 	->,%
@@ -131,17 +80,6 @@
 	>=stealth,%
 	color=plum,%
 ]
-\tikzstyle{line} = [%
-	thick,%
-	color=plum%	
-]
-\tikzstyle{dotted} = [%
-	thick,%
-	->,%
-	>=stealth,%
-	color=plum,%
-	dash pattern=on 3pt off 4pt on \the\pgflinewidth off 4pt%
-]
 \pgfdeclarelayer{bg}    % declare background layer
 \pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
 
@@ -150,6 +88,16 @@
 	% emulate the `\caption` style outside of `figure` env
 	\begin{spacing}{0.9}%
 		\scriptsize F\textsc{igure} -- #1%
+	\end{spacing}
+}
+\newcommand{\tikztemplate}[2]{%
+	% template for our tikz elements
+	% #1: title
+	% #2: inner content
+	\texttt{\textsc{#1}}
+	\\~\\
+	\begin{spacing}{0.9}
+		\small{#2}
 	\end{spacing}
 }
 
@@ -341,9 +289,244 @@
 	\end{figure}
 \end{frame}
 
-\section{Modéliser un lieu: structurer une pluralité}
+\section{Modéliser un lieu, structurer une pluralité}
 \subsection{Une réponse technique à des questionnements théoriques}
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Une réponse technique à des questionnements théoriques}
+	Les réflexions sur le lieu \textbf{structurent toute la chaîne de traitement} du projet Richelieu et sont centrales sur \textbf{trois plans}:
+	\begin{itemize}
+		\item La modélisation des données
+		\item La modélisation 3D de la Place de la Bourse
+		\item Le développement de l'application Web du projet
+	\end{itemize}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{includes/pipeline-richelieu.png}
+		\caption{Chaîne de traitement du projet}
+	\end{figure}
+\end{frame}
+
+
 \subsection{Des unités minimales en interrelation: une approche modulaire du lieu}
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	Un modèle relationnel (\texttt{SQL}) permet une approche \textbf{modulaire} du lieu:
+	\begin{itemize}
+		\item Pas du \enquote{sujet} central (contrairement au \texttt{XML})
+		\item Le domaine modélisé est divisé en une collection d'objets en interrelation
+		\item Plusieurs vues d'un même objet sont possibles
+	\end{itemize}
+	Le modèle relationnel permet donc de modéliser la complexité du lieu en l'abordant comme un ensemble d'\textbf{unités minimales en interrelation}.
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\tikz[node distance=1cm, scale=0.7, transform shape]{
+			\node[act] (lieu) at (0,0) 
+			{
+				\tikztemplate{Lieu}{
+					\begin{itemize}
+						\item Emprise au sol
+						\item Durée d'existence (tranche de dates)
+					\end{itemize}
+				}
+			};
+		}
+		\caption{Modélisation relationnelle d'un lieu}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\tikz[node distance=1cm, scale=0.7, transform shape]{
+			\node[act] (lieu) at (0,0) 
+			{
+				\tikztemplate{Lieu}{
+					\begin{itemize}
+						\item Emprise au sol
+						\item Durée d'existence (tranche de dates)
+					\end{itemize}
+				}
+			};
+			\node[act] (addresse) at (5,0) 
+			{
+				\tikztemplate{Adresse}{
+					Désignation administrative du lieu
+					\begin{itemize}
+						\item N° de rue
+						\item Nom de rue
+					\end{itemize}
+				}
+			};
+			\draw[arrow] (lieu) -- (addresse);
+		}
+		\caption{Modélisation relationnelle d'un lieu}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\tikz[node distance=1cm, scale=0.7, transform shape]{
+			\node[act] (lieu) at (0,0) 
+			{
+				\tikztemplate{Lieu}{
+					\begin{itemize}
+						\item Emprise au sol
+						\item Durée d'existence (tranche de dates)
+					\end{itemize}
+				}
+			};
+			\node[act] (addresse) at (5,0) 
+			{
+				\tikztemplate{Adresse}{
+					Désignation administrative du lieu
+					\begin{itemize}
+						\item N° de rue
+						\item Nom de rue
+					\end{itemize}
+				}
+			};
+			\node[act] (carte) at (0,-3) 
+			{
+				\tikztemplate{Cartographie}{
+					Représentation cartographique du lieu dans un document d'archives
+					\begin{itemize}
+						\item Cartel muséographique
+						\item Lien le fichier image spatialisé dans un SIG
+					\end{itemize}
+				}
+			};
+			\draw[arrow] (lieu) -- (addresse);
+			\draw[arrow] (lieu) -- (carte);
+		}
+		\caption{Modélisation relationnelle d'un lieu}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\tikz[node distance=1cm, scale=0.7, transform shape]{
+			\node[act] (lieu) at (0,0) 
+			{
+				\tikztemplate{Lieu}{
+					\begin{itemize}
+						\item Emprise au sol
+						\item Durée d'existence (tranche de dates)
+					\end{itemize}
+				}
+			};
+			\node[act] (addresse) at (5,0) 
+			{
+				\tikztemplate{Adresse}{
+					Désignation administrative du lieu
+					\begin{itemize}
+						\item N° de rue
+						\item Nom de rue
+					\end{itemize}
+				}
+			};
+			\node[act] (carte) at (0,-3) 
+			{
+				\tikztemplate{Cartographie}{
+					Représentation cartographique du lieu dans un document d'archives
+					\begin{itemize}
+						\item Cartel muséographique
+						\item Lien le fichier image spatialisé dans un SIG
+					\end{itemize}
+				}
+			};
+			\node[act] (icono) at (-5,0) 
+			{
+				\tikztemplate{Iconographie}{
+					Ressource iconographique représentant du lieu
+					\begin{itemize}
+						\item Cartel muséographique
+						\item Lien vers des manifestes IIIF pour accéder aux images
+					\end{itemize}
+				}
+			};
+			\draw[arrow] (lieu) -- (addresse);
+			\draw[arrow] (lieu) -- (carte);
+			\draw[arrow] (lieu) -- (icono);
+		}
+		\caption{Modélisation relationnelle d'un lieu}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\tikz[node distance=1cm, scale=0.7, transform shape]{
+			\node[act] (lieu) at (0,0) 
+			{
+				\tikztemplate{Lieu}{
+					\begin{itemize}
+						\item Emprise au sol
+						\item Durée d'existence (tranche de dates)
+					\end{itemize}
+				}
+			};
+			\node[act] (addresse) at (5,0) 
+			{
+				\tikztemplate{Adresse}{
+					Désignation administrative du lieu
+					\begin{itemize}
+						\item N° de rue
+						\item Nom de rue
+					\end{itemize}
+				}
+			};
+			\node[act] (carte) at (0,-3) 
+			{
+				\tikztemplate{Cartographie}{
+					Représentation cartographique du lieu dans un document d'archives
+					\begin{itemize}
+						\item Cartel muséographique
+						\item Lien le fichier image spatialisé dans un SIG
+					\end{itemize}
+				}
+			};
+			\node[act] (icono) at (-5,0) 
+			{
+				\tikztemplate{Iconographie}{
+					Ressource iconographique représentant du lieu
+					\begin{itemize}
+						\item Cartel muséographique
+						\item Lien vers des manifestes IIIF pour accéder aux images
+					\end{itemize}
+				}
+			};
+			\node[act] (groupe) at (0,2.5) 
+			{
+				\tikztemplate{Groupement de lieux}{
+					Groupement synchronique des évolutions d'un lieu dans le temps
+				}
+			};
+			\draw[arrow] (lieu) -- (addresse);
+			\draw[arrow] (lieu) -- (carte);
+			\draw[arrow] (lieu) -- (groupe);
+			\draw[arrow] (lieu) -- (icono);
+		}
+		\caption{Modélisation relationnelle d'un lieu}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Des unités minimales en interrelation: une approche modulaire du lieu}
+	\begin{figure}[width=\textwidth,height=\textheight]
+		\centering
+		\includegraphics[width=0.9\textwidth]{includes/data-model.png}
+		\caption{Modèle relationnel complet de la base de données Richelieu}
+	\end{figure}
+\end{frame}
+
 \subsection{Modélisation partielle et angles morts}
+\begin{frame}{Modéliser un lieu, structurer une pluralité}{Modélisation partielle et angles morts}
+	Notre approche du lieu est pragmatique et laisse des angles morts:
+	\begin{itemize}
+		\item Contraintes techniques
+		 \item Espace bidimensionnel
+	\end{itemize}
+\end{frame}
 
 \end{document}

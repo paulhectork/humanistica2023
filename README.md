@@ -51,6 +51,7 @@ pdflatex -synctex=1 -interaction=nonstopmode humanistica_abstract_230627.tex
 
 Compiler les slides: utiliser **xelatex** (compiler 2 fois si besoin)
 ```bash
+cd presentation
 xelatex -synctex=1 -shell-escape -interaction=nonstopmode -8bit "humanistica_slides_230627".tex
 ```
 

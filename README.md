@@ -1,7 +1,10 @@
 # *La "marque" du lieu dans le "quartier Richelieu"*: conférence à Humanistica 2023, Genève
 
 Ce dépôt contient les sources des *slides* et de l'*abstract* publié dans les actes du colloque 
-Humanistica à Genève. L'article a été écrit par: Paul Kervegan, Charlotte Duvette, Colin Prudhomme, 
+Humanistica à Genève. Ce dépôt est un clone, le dépôt disponible se trouve dans [les actes du
+colloque](https://hal.science/HUMANISTICA-2023/hal-04108218v1).
+
+L'article a été co-écrit par: Paul Kervegan, Charlotte Duvette, Colin Prudhomme, 
 Loïc Jeanson, Justine Gain, Esther Dasilva et Louise Baranger.
 
 ---

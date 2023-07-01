@@ -1,4 +1,4 @@
-# *La "marque" du lieu dans le "quartier Richelieu"*: conférence à Humanistica 2023, Genève
+# *La "marque du lieu" dans le "quartier Richelieu"*: conférence à Humanistica 2023, Genève
 
 Ce dépôt contient les sources des *slides* et de l'*abstract* publié dans les actes du colloque 
 Humanistica à Genève. Ce dépôt est un clone, le dépôt disponible se trouve dans [les actes du

@@ -1,6 +1,8 @@
 # *La "marque" du lieu dans le "quartier Richelieu"*: conférence à Humanistica 2023, Genève
 
-Ce dépôt contient les sources des *slides* et de l'*abstract* publié dans les actes du colloque Humanistica à Genève.
+Ce dépôt contient les sources des *slides* et de l'*abstract* publié dans les actes du colloque 
+Humanistica à Genève. L'article a été écrit par: Paul Kervegan, Charlotte Duvette, Colin Prudhomme, 
+Loïc Jeanson, Justine Gain, Esther Dasilva et Louise Baranger.
 
 ---
 
@@ -17,6 +19,12 @@ dont le lieu peut servir de moteur pour l'exploration et l'interaction avec le
 corpus sur une application Web. En définitive, nous souhaitons interroger la 
 manière dont le lieu vient modifier notre rapport aux sources et à la technique, 
 dans le cadre d'un projet en humanités numériques et en histoire de l'architecture. 
+
+---
+
+## Remerciements
+
+Les auteurices remercient Simon Gabay (@gabays) pour ses conseils, relectures et précieux débuggages du code LaTeX et de ses bugs sans fin.
 
 ---
 
@@ -42,12 +50,6 @@ Compiler les slides: utiliser **xelatex** (compiler 2 fois si besoin)
 ```bash
 xelatex -synctex=1 -shell-escape -interaction=nonstopmode -8bit "humanistica_slides_230627".tex
 ```
-
----
-
-## Remerciements
-
-Les auteurices remercient Simon Gabay (@gabays) pour ses conseils, relectures et précieux débuggages du code LaTeX et de ses bugs sans fin.
 
 ---
 
